@@ -1,6 +1,7 @@
 # entro.py
 
 ##Introduction
+
 Entropy measures the degree of randomness of a system. It is inversely proportional to the information of the system,
 such that the maximum entropy state is characterized by equiprobable, independent elementary events. The intuitive
 idea is that the most random state is characterized by equiprobable events. For example a "fair" die is one this is
@@ -16,7 +17,9 @@ It is intuitively reasonable that entropy should also have an additive property,
 entropy of system *B* should be equal to the entropy of the composite system *AB*: $S_{A}+S_{B} = S_{AB}$ (2). Boltzmann solved
 this problem in the early 19th century. When numbers are expressed as powers of the same base are multiplicative, their
 exponents are additive. Logarithms are such exponents. Therefore we can combine both properties (1) & (2):
-$$S=K \log W$$ (3)
+\begin{equation}
+\S=K \log W
+\end{equation}
 Thus the entropy of system *A* may be written
 $$S_{A}=K \log W_{A}$$ (4)
 and system *B*

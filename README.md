@@ -60,7 +60,7 @@ $$H_{1} = -K \sum_{i} p_{i} \log p_{i}$$
 But the $p_{i}$ are known, they are simply the composition of the DNA molecule. Let us consider the scenario where all bases
 are equiprobable, $p(A) = p(T) = p(C) = p(g) = \frac{1}{4}$:
 $$H_{1} = - \log \frac{1}{4} = \log 4$$
-$$H_{1} = 2 \bits\$$
+$$H_{1} = 2 bits$$
 Since all the bases are equiprobable, this is the maximum value that $H_{1}$ can ever have. More generally, let *a* be the number
 of letters/symbols in an alphabet/sequence (*a* is 4 for DNA), therefore:
 $$p_{i} = \frac{1}{a}$$
@@ -88,7 +88,7 @@ $$p(G|A) = p(G)$$
 then the bases would be independent of each other. However, if we were to find that the conditional probabilities were *not* the
 same as the base composition, then there would be some divergence from the independence of the bases. We can define the sample
 description space for doublet (letter pair) sequences as:
-$$S_{2} = {AA, AT, AC, AG, TA, TT, TC, TG, CA, CT, CC, CG, GA, GT, GC, GG}
+$$S_{2} = {AA, AT, AC, AG, TA, TT, TC, TG, CA, CT, CC, CG, GA, GT, GC, GG}$$
 And therefore the entropy ($H_{1}$) of the description space $S_{2}$ is
 $$H_{2} = -[p(AA) \log p(AA) + p(AT) \log p(AT) + ...]$$
 But what is the probability of the doublet event?

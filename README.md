@@ -78,7 +78,7 @@ It is easy to see that $D_{1}$ and $H_1$ tell us only part of the story. They ar
 events, which contains no information on how these letters are arranged in a linear sequence. $H_1$ is only a function of the
 base composition of the sequence. We said that the maximum entropy state is characterized by equiprobable and independent events.
 Therefore we must ask the question "Does the occurence of any one base along the chain alter the probability of occurence of the
-base next to it?" This is not an entirely pointless inquiry, as stated by Elton, R.A. (1975):
+base next to it?" This is not an entirely pointless inquiry, as stated by R.A. Elton (1975):
 
 >What determines the order of bases in a particular nucleic acid sequence? The widely accepted answer is that ancestral sequences have been moulded
 by mutation and subsequent selection to give rise to the surviving descendants we see today. The relevance of this basic concept to the statistical analysis of sequences is that we can consider the ordering of bases to be under the influence of two factors, random and systematic. These would essentially correspond to the mutation and selection aspects of evolution, in that two sequences under the same selective pressure would be expected to show the same general trends in the frequency of given sub-sequences, but would differ randomly from one another as a result of different chance occurrences of mutational change.
@@ -95,24 +95,43 @@ $$S_{2} = \{AA, AT, AC, AG, TA, TT, TC, TG, CA, CT, CC, CG, GA, GT, GC, GG\}$$
 And therefore the entropy ($H_{1}$) of the description space $S_{2}$ is
 $$H_{2} = -[p(AA) \log p(AA) + p(AT) \log p(AT) + ...]$$
 But what is the probability of the doublet event?
-###### Technical Aside
-In the original literature (published 1972) Gatlin references the *nearest neighbor* experiments and uses those results to
+
+##### Technical Aside
+In the original literature (published 1972) Gatlin references the *nearest-neighbor* experiments and uses those results to
 calculate the doublet frequencies. This will not be the method used here as it is a bit antiquated. It should be noted that
 the first viable method of genome sequencing, Sanger sequencing, would not be invented until 1977. Yet still, viable full-genome
 sequncing wouldn't become commonplace until the turn of the century, much less *affordable* genome sequencing ten years after.
+
 The point of my program, *entro.py* is to bring her analysis into the 21st century by adapting the methods to work with full
-genome sequences, which may be obtained independently or from the NIH repositries.
-Briefly, I will describe the method used in this code to calculate the doublet frequencies.
-The method described by R.A. Elton:
+genome sequences (which may be obtained independently or from the NIH repositries). Briefly, I will describe the method used
+in this code to calculate the doublet frequencies.
+R.A. Elton (1975) describes a method not based on the nearest-neighbor experiments:
 
 >The sequence can be represented by $(x_{l}, ... , x_{n+1})$, using the convention that each value $x_i$ is l, 2, 3 or 4
 according as the ith base in the sequence is U(T), C, A or G. The transition count is then a 4x4 matrix of frequencies {$f_{ij}$}, where $f_{ij}$ is the number of times that a base i in the sequence is followed by a base j.
 
 By the grace of python, we do not need to use the cited convention that "each value $x_i$ is l, 2, 3 or 4," but rather may
 simply use the count() function to identify the number of times a doublet appears in a given sequence.
+
 Just as one would find the frequency of a singlet by counting its occurence in a given sequence, then dividing it by the
 total length of the sequence, we may find the doublet frequencies in a similar fashion. In order to determine the frequencies
 of each doublet, the occurence must be divided by the "doublet space," i.e. the total amount of *possible* doublets. Consider
 the following sequence ```genome = "AGCTTTTCA"```. It can be seen that ```len(genome) = 9``` but that the amount of doublets is 8.
 This follows for even sequences too, ```genome = "AGCTTTTC"``` and ```len(genome) = 7```. So it can be seen that the doublet
 space is always $n-1$ or ```len(genome)-1```.
+
+Therefore, we may construct the sample space for doublets, $S_2$, from the sample space of singlets, $S_1$, as follows:
+```
+n = ["A", "T", "C", "G"]
+nn = []
+fij = []
+
+for x in n:
+  for y in n:
+    nn.append(x + y)
+    fij.append(genome.count(x + y) / (len(genome)-1))
+```
+where $S_1$ is represented by ```n = ["A", "T", "C", "G"]```. $S_2$ is constructed by looping through $S_1$ twice and appending
+the doublets into a new list, ```n = []```. At the same time, the frequencies, $f_{ij}$ are calculated by counting the occurence
+of a given doublet, ```genome.count(x + y)``` and dividing it by the aforementioned doublet space, ```len(genome)-1```. This is
+all appended to a list of doublet frequencies, ```fij = []```.

@@ -101,7 +101,7 @@ scenario in which the bases are *independent*, i.e. $p(AA) = p(A) \times p(A)$. 
 
 Finally, the **divergence from independence**, which we will call $D_2$, is simply the difference between the two.
 $$D_2 = H_2^{Ind} - H_2^D$$
-The sume of $D_1$ and $D_2$ is the total divergence from the maximum enttropy state ($\log a$).
+The sume of $D_1$ and $D_2$ is the total divergence from the maximum enttropy state ( $ \log a$ ).
 
 ##### Technical Aside
 In the original literature (published 1972) Gatlin references the *nearest-neighbor* experiments and uses those results to

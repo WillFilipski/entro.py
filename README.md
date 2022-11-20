@@ -1,4 +1,7 @@
 # entro.py
+The following is a paraphrased introduction to several concepts from information theory taken from the text
+*Information Theory & the Living System* by Lila L. Gatlin. It describes how and why we are calculating the
+quantities that we are, and why they are significant.
 
 ## Introduction
 
@@ -88,7 +91,28 @@ $$p(G|A) = p(G)$$
 then the bases would be independent of each other. However, if we were to find that the conditional probabilities were *not* the
 same as the base composition, then there would be some divergence from the independence of the bases. We can define the sample
 description space for doublet (letter pair) sequences as:
-$$S_{2} = {AA, AT, AC, AG, TA, TT, TC, TG, CA, CT, CC, CG, GA, GT, GC, GG}$$
+$$S_{2} = \{AA, AT, AC, AG, TA, TT, TC, TG, CA, CT, CC, CG, GA, GT, GC, GG\}$$
 And therefore the entropy ($H_{1}$) of the description space $S_{2}$ is
 $$H_{2} = -[p(AA) \log p(AA) + p(AT) \log p(AT) + ...]$$
 But what is the probability of the doublet event?
+#Technical Aside
+In the original literature (published 1972) Gatlin references the *nearest neighbor* experiments and uses those results to
+calculate the doublet frequencies. This will not be the method used here as it is a bit antiquated. It should be noted that
+the first viable method of genome sequencing, Sanger sequencing, would not be invented until 1977. Yet still, viable full-genome
+sequncing wouldn't become commonplace until the turn of the century, much less *affordable* genome sequencing ten years after.
+The point of my program, *entro.py* is to bring her analysis into the 21st century by adapting the methods to work with full
+genome sequences, which may be obtained independently or from the NIH repositries.
+Briefly, I will describe the method used in this code to calculate the doublet frequencies.
+The method described by R.A. Elton:
+
+>The sequence can be represented by $(x_{l}, ... , x_{n+1})$, using the convention that each value $x_i$ is l, 2, 3 or 4
+according as the ith base in the sequence is U(T), C, A or G. The transition count is then a 4x4 matrix of frequencies {$f_{ij}$}, where $f_{ij}$ is the number of times that a base i in the sequence is followed by a base j.
+
+By the grace of python, we do not need to use the cited convention that "each value $x_i$ is l, 2, 3 or 4," but rather may
+simply use the count() function to identify the number of times a doublet appears in a given sequence.
+Just as one would find the frequency of a singlet by counting its occurence in a given sequence, then dividing it by the
+total length of the sequence, we may find the doublet frequencies in a similar fashion. In order to determine the frequencies
+of each doublet, the occurence must be divided by the "doublet space," i.e. the total amount of *possible* doublets. Consider
+the following sequence ```genome = "AGCTTTTCA"```. It can be seen that ```len(genome) = 9``` but that the amount of doublets is 8.
+This follows for even sequences too, ```genome = "AGCTTTTC"``` and ```len(genome) = 7```. So it can be seen that the doublet
+space is always $n-1$ or ```len(genome)-1```.

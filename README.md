@@ -40,9 +40,9 @@ microstates, *W*, i.e.,
 $p_{i}= \frac{1}{W}$ or $W= \frac{1}{p_{i}}$
 Substituting this expression of *W* in equation (3) yields,
 $$S=K \log \frac{1}{p_{i}}$$
-which furthur simplifies to equation (9):
+which furthur simplifies to equation (4):
 $$S=-K \log p_{i}$$
-Keep in mind that equation (9) only holds for the case in which the microstates are equiprobable. Developing the idea further,
+Keep in mind that equation (4) only holds for the case in which the microstates are equiprobable. Developing the idea further,
 the expectation value of a numerical-valued random phenomenon is the sum over all possible outcomes of the probability of each
 individual outcome multiplied by the numerical value of that individual outcome:
 $$E_{x}=\sum_{i} p_{i} n_{i}$$
@@ -92,9 +92,16 @@ then the bases would be independent of each other. However, if we were to find t
 same as the base composition, then there would be some divergence from the independence of the bases. We can define the sample
 description space for doublet (letter pair) sequences as:
 $$S_{2} = \{AA, AT, AC, AG, TA, TT, TC, TG, CA, CT, CC, CG, GA, GT, GC, GG\}$$
-And therefore the entropy ($H_{1}$) of the description space $S_{2}$ is
+And therefore the entropy ($H_{1}$) of the description space $S_{2}$ represented by equation (5):
 $$H_{2} = -[p(AA) \log p(AA) + p(AT) \log p(AT) + ...]$$
-But what is the probability of the doublet event?
+But what is the probability of the doublet event? This is described in more detail below, in the *technical aside*.
+The takeaway is that DNA bases *are not* independent events, nor should we have expected them to be. Solving equation (5) will
+give the value of $H_2$ when the bases are *dependent*, which we may denote as $H_2^D$. We may also solve equation (5) for the
+scenario in which the bases are *independent*, i.e. $p(AA) = p(A) \times p(A)$. We will call this entropy $H_2^{Ind}$.
+
+Finally, the **divergence from independence**, which we will call $D_2$, is simply the difference between the two.
+$$D_2 = H_2^{Ind} - H_2^D$$
+The sume of $D_1$ and $D_2$ is the total divergence from the maximum enttropy state ($\log a$).
 
 ##### Technical Aside
 In the original literature (published 1972) Gatlin references the *nearest-neighbor* experiments and uses those results to
@@ -107,11 +114,11 @@ genome sequences (which may be obtained independently or from the NIH repositrie
 in this code to calculate the doublet frequencies.
 R.A. Elton (1975) describes a method not based on the nearest-neighbor experiments:
 
->The sequence can be represented by $(x_{l}, ... , x_{n+1})$, using the convention that each value $x_i$ is l, 2, 3 or 4
-according as the ith base in the sequence is U(T), C, A or G. The transition count is then a 4x4 matrix of frequencies {$f_{ij}$}, where $f_{ij}$ is the number of times that a base i in the sequence is followed by a base j.
+>The sequence can be represented by $(x_{l}, ... , x_{n+1})$, using the convention that each value $x_i$ is 1, 2, 3 or 4
+according as the ith base in the sequence is U(T), C, A or G. The transition count is then a 4x4 matrix of frequencies \{$f_{ij}$\}, where $f_{ij}$ is the number of times that a base i in the sequence is followed by a base j.
 
-By the grace of python, we do not need to use the cited convention that "each value $x_i$ is l, 2, 3 or 4," but rather may
-simply use the count() function to identify the number of times a doublet appears in a given sequence.
+By the grace of python, we do not need to use the cited convention that "each value $x_i$ is 1, 2, 3 or 4," but rather may
+simply use the ```count()``` function to identify the number of times a doublet appears in a given sequence.
 
 Just as one would find the frequency of a singlet by counting its occurence in a given sequence, then dividing it by the
 total length of the sequence, we may find the doublet frequencies in a similar fashion. In order to determine the frequencies
@@ -134,4 +141,15 @@ for x in n:
 where $S_1$ is represented by ```n = ["A", "T", "C", "G"]```. $S_2$ is constructed by looping through $S_1$ twice and appending
 the doublets into a new list, ```n = []```. At the same time, the frequencies, $f_{ij}$ are calculated by counting the occurence
 of a given doublet, ```genome.count(x + y)``` and dividing it by the aforementioned doublet space, ```len(genome)-1```. This is
-all appended to a list of doublet frequencies, ```fij = []```.
+all appended to a list of doublet frequencies, ```fij = []```. The nested for loops in effect are the same method described by
+R.A. Elton, but instead of keeping it in a 4x4 matrix, the results are appended into a 1-dimensional list.
+
+## Potential versus Stored Information
+Potential information is vital to communication. Without the element of of potential varietyand uncertainty about what will come
+next, there can be no transmission of information. In fact, the entropy of Shannon's formula is usually referred to as "information"
+throughout the literature and sometimes as "information content." Are we to conclude then that as the entropy increases the
+information always increases? No, it is not quite this simple. Stored information is associated with the ordering process brought
+about by the constraints of a language or any organized information storage process. Since stored information varies inversely with
+entropy, lowered entropy means a higher capacity to store information. This is precisely what we have been calculating in $D_1$ and $D_2$,
+whose sum measures exactly how much the entropy has been lowered from the maximum entropy state. Thus we may define stored information, $I_s$, as
+$$I_s = D_1 + D_2$$

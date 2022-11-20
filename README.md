@@ -95,7 +95,7 @@ $$S_{2} = \{AA, AT, AC, AG, TA, TT, TC, TG, CA, CT, CC, CG, GA, GT, GC, GG\}$$
 And therefore the entropy ($H_{1}$) of the description space $S_{2}$ is
 $$H_{2} = -[p(AA) \log p(AA) + p(AT) \log p(AT) + ...]$$
 But what is the probability of the doublet event?
-#Technical Aside
+###### Technical Aside
 In the original literature (published 1972) Gatlin references the *nearest neighbor* experiments and uses those results to
 calculate the doublet frequencies. This will not be the method used here as it is a bit antiquated. It should be noted that
 the first viable method of genome sequencing, Sanger sequencing, would not be invented until 1977. Yet still, viable full-genome

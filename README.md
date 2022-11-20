@@ -61,7 +61,7 @@ defined on *any* sample description space. We may apply this concept to the desc
 The entropy of this space is known:
 $$H_{1} = -K \sum_{i} p_{i} \log p_{i}$$
 But the $p_{i}$ are known, they are simply the composition of the DNA molecule. Let us consider the scenario where all bases
-are equiprobable, $p(A) = p(T) = p(C) = p(g) = \frac{1}{4}$:
+are equiprobable, $p(A) = p(T) = p(C) = p(G) = \frac{1}{4}$:
 $$H_{1} = - \log \frac{1}{4} = \log 4$$
 $$H_{1} = 2 \bits$$
 Since all the bases are equiprobable, this is the maximum value that $H_{1}$ can ever have. More generally, let *a* be the number

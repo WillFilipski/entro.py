@@ -46,7 +46,7 @@ Keep in mind that equation (4) only holds for the case in which the microstates 
 the expectation value of a numerical-valued random phenomenon is the sum over all possible outcomes of the probability of each
 individual outcome multiplied by the numerical value of that individual outcome:
 $$E_{x}=\sum_{i} p_{i} n_{i}$$
-With every arrangement of the system there is associated the number $-K log p_{i}$, and the probability of each arrangement $p_{i}$.
+With every arrangement of the system there is associated the number $-K \log p_{i}$, and the probability of each arrangement $p_{i}$.
 The expectation value of this numerical-valued random phenomenon, which we will denote *H*, is
 $$H=-K \sum_{i} p_{i} \log p_{i}$$
 This is Shannon's formula. It is the expectation value of the Boltzmann variable, $-K log p_{i}$. It expresses the entropy of

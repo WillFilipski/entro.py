@@ -101,7 +101,7 @@ scenario in which the bases are *independent*, i.e. $p(AA) = p(A) \times p(A)$. 
 
 Finally, the **divergence from independence**, which we will call $D_2$, is simply the difference between the two.
 $$D_2 = H_2^{Ind} - H_2^D$$
-The sume of $D_1$ and $D_2$ is the total divergence from the maximum enttropy state $\log a$.
+The sume of $D_1$ and $D_2$ is the total divergence from the maximum entropy state $\log a$.
 
 #### Technical Aside
 In the original literature (published 1972) Gatlin references the *nearest-neighbor* experiments and uses those results to
@@ -148,7 +148,7 @@ all appended to a list of doublet frequencies, ```fij = []```. The nested for lo
 R.A. Elton, but instead of keeping it in a 4x4 matrix, the results are appended into a 1-dimensional list.
 
 ## Potential versus Stored Information
-Potential information is vital to communication. Without the element of of potential varietyand uncertainty about what will come
+Potential information is vital to communication. Without the element of of potential variety and uncertainty about what will come
 next, there can be no transmission of information. In fact, the entropy of Shannon's formula is usually referred to as "information"
 throughout the literature and sometimes as "information content." Are we to conclude then that as the entropy increases the
 information always increases? No, it is not quite this simple. Stored information is associated with the ordering process brought

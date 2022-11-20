@@ -17,9 +17,9 @@ It is intuitively reasonable that entropy should also have an additive property,
 entropy of system *B* should be equal to the entropy of the composite system *AB*: $S_{A}+S_{B} = S_{AB}$ (2). Boltzmann solved
 this problem in the early 19th century. When numbers are expressed as powers of the same base are multiplicative, their
 exponents are additive. Logarithms are such exponents. Therefore we can combine both properties (1) & (2):
-\begin{equation}
+tag{\begin{equation}
 \S=K \log W
-\end{equation}
+\end{equation}}
 Thus the entropy of system *A* may be written
 $$S_{A}=K \log W_{A}$$ (4)
 and system *B*

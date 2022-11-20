@@ -124,8 +124,10 @@ Just as one would find the frequency of a singlet by counting its occurence in a
 total length of the sequence, we may find the doublet frequencies in a similar fashion. In order to determine the frequencies
 of each doublet, the occurence must be divided by the "doublet space," i.e. the total amount of *possible* doublets. Consider
 the following sequence ```genome = "AGCTTTTCA"```. It can be seen that ```len(genome) = 9``` but that the amount of doublets is 8.
-This follows for even sequences too, ```genome = "AGCTTTTC"``` which has ```len(genome) = 7``` with a doublet space of 6. So it
-can be seen that the doublet space is always $n-1$ or ```len(genome)-1```.
+This follows for even sequences too, ```genome = "AGCTTTTC"``` which has ```len(genome) = 8``` with a doublet space of 7. So it
+can be seen that the doublet space is always $n-1$ or ```len(genome)-1```. This can be proved more rigourously by noting that each
+single base in the sequence may serve as the "root" of a doublet pair. Moving left to right through the sequence, no matter the
+length,, there will always be a doublet pair that is comprised of the last base and a "null" value outside the sequence, so to speak.
 
 Therefore, we may construct the sample space for doublets, $S_2$, from the sample space of singlets, $S_1$, as follows:
 ```

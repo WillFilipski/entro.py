@@ -1,6 +1,6 @@
 # entro.py
 
-###Introduction
+## Introduction
 
 Entropy measures the degree of randomness of a system. It is inversely proportional to the information of the system,
 such that the maximum entropy state is characterized by equiprobable, independent elementary events. The intuitive
@@ -30,7 +30,7 @@ or
 $$S_{AB}=K \log W_{AB}$$
 It can be seen that Boltzmann's definition has both desired properties.
 
-##Shannon Entropy
+## Shannon Entropy
 Statistical thermodynamics, which we have been discussing, is based on the assumption that all microstates are equiprobable.
 If this is the case, then the probability of each individual microstate, $p_{i}$, is simply one out of the total number of
 microstates, *W*, i.e.,
@@ -52,7 +52,7 @@ not equiprobable.
 As for units, the logarithm base we use is of arbitrary choice, and the value of the proportionality constant is also arbitrary.
 When *K* is set to equal to 1 and base 2 logarithms are used, the unit of entropy is called a bit.
 
-###Divergence from Equiprobability
+## Divergence from Equiprobability
 The power of Shannon's formula lies in its generality. The $p_{i}$ may refer to the probabilites of *any* elementary events
 defined on *any* sample description space. We may apply this concept to the description space of DNA: $S_{1} = {A, T, C, G}$
 The entropy of this space is known:
@@ -60,4 +60,35 @@ $$H_{1} = -K \sum_{i} p_{i} \log p_{i}$$
 But the $p_{i}$ are known, they are simply the composition of the DNA molecule. Let us consider the scenario where all bases
 are equiprobable, $p(A) = p(T) = p(C) = p(g) = \frac{1}{4}$:
 $$H_{1} = - \log \frac{1}{4} = \log 4$$
-$$H_{1} = 2 \bits$$
+$$H_{1} = 2 \bits\$$
+Since all the bases are equiprobable, this is the maximum value that $H_{1}$ can ever have. More generally, let *a* be the number
+of letters/symbols in an alphabet/sequence (*a* is 4 for DNA), therefore:
+$$p_{i} = \frac{1}{a}$$
+and
+$$H_{1} = -\log p_{i} = -\log \frac{1}{a} = \log a$$
+The divergence from this equiprobable state, which we may call $D_{1}$, is the maximum value $H_{1}$ can have, minus the value it
+actually does have.
+$$D_{1} = H_{1}^Max - H_{1} = \log a - H_{1}$$
+
+## Divergence from Independence
+It is easy to see that $D_{1}$ and $H_1$ tell us only part of the story. They are both based on $S_1$, a space of single-letter
+events, which contains no information on how these letters are arranged in a linear sequence. $H_1$ is only a function of the
+base composition of the sequence. We said that the maximum entropy state is characterized by equiprobable and independent events.
+Therefore we must ask the question "Does the occurence of any one base along the chain alter the probability of occurence of the
+base next to it?" This is not an entirely pointless inquiry, as stated by Elton, R.A. (1975):
+
+>What determines the order of bases in a particular nucleic acid sequence? The widely accepted answer is that ancestral sequences have been moulded
+by mutation and subsequent selection to give rise to the surviving descendants we see today. The relevance of this basic concept to the statistical analysis of sequences is that we can consider the ordering of bases to be under the influence of two factors, random and systematic. These would essentially correspond to the mutation and selection aspects of evolution, in that two sequences under the same selective pressure would be expected to show the same general trends in the frequency of given sub-sequences, but would differ randomly from one another as a result of different chance occurrences of mutational change.
+
+If we could measure these conditional probablities in some way, and if we were to find that they were the same as the base composition, i.e.,
+$$p(A|A) = p(A)$$
+$$p(T|A) = p(T)$$
+$$p(C|A) = p(C)$$
+$$p(G|A) = p(G)$$
+then the bases would be independent of each other. However, if we were to find that the conditional probabilities were *not* the
+same as the base composition, then there would be some divergence from the independence of the bases. We can define the sample
+description space for doublet (letter pair) sequences as:
+$$S_{2} = {AA, AT, AC, AG, TA, TT, TC, TG, CA, CT, CC, CG, GA, GT, GC, GG}
+And therefore the entropy ($H_{1}$) of the description space $S_{2}$ is
+$$H_{2} = -[p(AA) \log p(AA) + p(AT) \log p(AT) + ...]$$
+But what is the probability of the doublet event?

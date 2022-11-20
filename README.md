@@ -91,7 +91,7 @@ $$p(G|A) = p(G)$$
 then the bases would be independent of each other. However, if we were to find that the conditional probabilities were *not* the
 same as the base composition, then there would be some divergence from the independence of the bases. We can define the sample
 description space for doublet (letter pair) sequences as:
-$$S_{2} = \left \{ AA, AT, AC, AG, TA, TT, TC, TG, CA, CT, CC, CG, GA, GT, GC, GG \right \} $$
+$$S_{2} = \{AA, AT, AC, AG, TA, TT, TC, TG, CA, CT, CC, CG, GA, GT, GC, GG\} $$
 And therefore the entropy ($H_{1}$) of the description space $S_{2}$ represented by equation (5):
 $$H_{2} = -[p(AA) \log p(AA) + p(AT) \log p(AT) + ...]$$
 But what is the probability of the doublet event? This is described in more detail below, in the *technical aside*.
@@ -139,7 +139,7 @@ for x in n:
     fij.append(genome.count(x + y) / (len(genome)-1))
 ```
 where $S_1$ is represented by ```n = ["A", "T", "C", "G"]```. $S_2$ is constructed by looping through $S_1$ twice and appending
-the doublets into a new list, ```n = []```. At the same time, the frequencies, $f_{ij}$ are calculated by counting the occurence
+the doublets into a new list, ```nn = []```. At the same time, the frequencies, $f_{ij}$ are calculated by counting the occurence
 of a given doublet, ```genome.count(x + y)``` and dividing it by the aforementioned doublet space, ```len(genome)-1```. This is
 all appended to a list of doublet frequencies, ```fij = []```. The nested for loops in effect are the same method described by
 R.A. Elton, but instead of keeping it in a 4x4 matrix, the results are appended into a 1-dimensional list.

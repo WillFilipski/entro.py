@@ -60,7 +60,7 @@ $$H_{1} = -K \sum_{i} p_{i} \log p_{i}$$
 But the $p_{i}$ are known, they are simply the composition of the DNA molecule. Let us consider the scenario where all bases
 are equiprobable, $p(A) = p(T) = p(C) = p(g) = \frac{1}{4}$:
 $$H_{1} = - \log \frac{1}{4} = \log 4$$
-$$H_{1} = 2 bits$$
+$$H_{1} = 2 \bits$$
 Since all the bases are equiprobable, this is the maximum value that $H_{1}$ can ever have. More generally, let *a* be the number
 of letters/symbols in an alphabet/sequence (*a* is 4 for DNA), therefore:
 $$p_{i} = \frac{1}{a}$$
@@ -68,7 +68,7 @@ and
 $$H_{1} = -\log p_{i} = -\log \frac{1}{a} = \log a$$
 The divergence from this equiprobable state, which we may call $D_{1}$, is the maximum value $H_{1}$ can have, minus the value it
 actually does have.
-$$D_{1} = H_{1}^Max - H_{1} = \log a - H_{1}$$
+$$D_{1} = H_{1}^{Max} - H_{1} = \log a - H_{1}$$
 
 ## Divergence from Independence
 It is easy to see that $D_{1}$ and $H_1$ tell us only part of the story. They are both based on $S_1$, a space of single-letter

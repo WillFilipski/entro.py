@@ -49,7 +49,7 @@ $$E_{x}=\sum_{i} p_{i} n_{i}$$
 With every arrangement of the system there is associated the number $-K \log p_{i}$, and the probability of each arrangement $p_{i}$.
 The expectation value of this numerical-valued random phenomenon, which we will denote *H*, is
 $$H=-K \sum_{i} p_{i} \log p_{i}$$
-This is Shannon's formula. It is the expectation value of the Boltzmann variable, $-K log p_{i}$. It expresses the entropy of
+This is Shannon's formula. It is the expectation value of the Boltzmann variable, $-K \log p_{i}$. It expresses the entropy of
 a system in terms of probabilities and may be used even when all the microstates or elementary arrangements of the system are
 not equiprobable.
 As for units, the logarithm base we use is of arbitrary choice, and the value of the proportionality constant is also arbitrary.

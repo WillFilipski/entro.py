@@ -91,7 +91,7 @@ $$p(G|A) = p(G)$$
 then the bases would be independent of each other. However, if we were to find that the conditional probabilities were *not* the
 same as the base composition, then there would be some divergence from the independence of the bases. We can define the sample
 description space for doublet (letter pair) sequences as:
-$$S_{2} = \{ AA, AT, AC, AG, TA, TT, TC, TG, CA, CT, CC, CG, GA, GT, GC, GG \}$$
+$$S_{2} = \{ AA, AT, AC, AG, TA, TT, TC, TG, CA, CT, CC, CG, GA, GT, GC, GG \} $$
 And therefore the entropy ($H_{1}$) of the description space $S_{2}$ represented by equation (5):
 $$H_{2} = -[p(AA) \log p(AA) + p(AT) \log p(AT) + ...]$$
 But what is the probability of the doublet event? This is described in more detail below, in the *technical aside*.
@@ -101,7 +101,7 @@ scenario in which the bases are *independent*, i.e. $p(AA) = p(A) \times p(A)$. 
 
 Finally, the **divergence from independence**, which we will call $D_2$, is simply the difference between the two.
 $$D_2 = H_2^{Ind} - H_2^D$$
-The sume of $D_1$ and $D_2$ is the total divergence from the maximum enttropy state ( $ \log a$ ).
+The sume of $D_1$ and $D_2$ is the total divergence from the maximum enttropy state $\log a$.
 
 ##### Technical Aside
 In the original literature (published 1972) Gatlin references the *nearest-neighbor* experiments and uses those results to

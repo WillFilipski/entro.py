@@ -1,7 +1,8 @@
 # entro.py
 The following is a paraphrased introduction to several concepts from information theory taken from the text
 *Information Theory & the Living System* by Lila L. Gatlin. It describes how and why we are calculating the
-quantities that we are, and why they are significant.
+quantities that we are, and why they are significant. Although the theory can be applied to any string
+consisting of any number of letters, the example and applications here will be for DNA.
 
 ## Introduction
 

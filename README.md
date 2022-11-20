@@ -91,7 +91,7 @@ $$p(G|A) = p(G)$$
 then the bases would be independent of each other. However, if we were to find that the conditional probabilities were *not* the
 same as the base composition, then there would be some divergence from the independence of the bases. We can define the sample
 description space for doublet (letter pair) sequences as:
-$$S_{2} = \{AA, AT, AC, AG, TA, TT, TC, TG, CA, CT, CC, CG, GA, GT, GC, GG\}$$
+$$S_{2} = \{ AA, AT, AC, AG, TA, TT, TC, TG, CA, CT, CC, CG, GA, GT, GC, GG \}$$
 And therefore the entropy ($H_{1}$) of the description space $S_{2}$ represented by equation (5):
 $$H_{2} = -[p(AA) \log p(AA) + p(AT) \log p(AT) + ...]$$
 But what is the probability of the doublet event? This is described in more detail below, in the *technical aside*.
@@ -115,7 +115,7 @@ in this code to calculate the doublet frequencies.
 R.A. Elton (1975) describes a method not based on the nearest-neighbor experiments:
 
 >The sequence can be represented by $(x_{l}, ... , x_{n+1})$, using the convention that each value $x_i$ is 1, 2, 3 or 4
-according as the ith base in the sequence is U(T), C, A or G. The transition count is then a 4x4 matrix of frequencies \{$f_{ij}$\}, where $f_{ij}$ is the number of times that a base i in the sequence is followed by a base j.
+according as the ith base in the sequence is U(T), C, A or G. The transition count is then a 4x4 matrix of frequencies { $f_{ij}$ }, where $f_{ij}$ is the number of times that a base *i* in the sequence is followed by a base *j*.
 
 By the grace of python, we do not need to use the cited convention that "each value $x_i$ is 1, 2, 3 or 4," but rather may
 simply use the ```count()``` function to identify the number of times a doublet appears in a given sequence.
@@ -124,8 +124,8 @@ Just as one would find the frequency of a singlet by counting its occurence in a
 total length of the sequence, we may find the doublet frequencies in a similar fashion. In order to determine the frequencies
 of each doublet, the occurence must be divided by the "doublet space," i.e. the total amount of *possible* doublets. Consider
 the following sequence ```genome = "AGCTTTTCA"```. It can be seen that ```len(genome) = 9``` but that the amount of doublets is 8.
-This follows for even sequences too, ```genome = "AGCTTTTC"``` and ```len(genome) = 7```. So it can be seen that the doublet
-space is always $n-1$ or ```len(genome)-1```.
+This follows for even sequences too, ```genome = "AGCTTTTC"``` which has ```len(genome) = 7``` with a doublet space of 6. So it
+can be seen that the doublet space is always $n-1$ or ```len(genome)-1```.
 
 Therefore, we may construct the sample space for doublets, $S_2$, from the sample space of singlets, $S_1$, as follows:
 ```

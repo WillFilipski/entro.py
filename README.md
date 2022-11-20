@@ -91,7 +91,7 @@ $$p(G|A) = p(G)$$
 then the bases would be independent of each other. However, if we were to find that the conditional probabilities were *not* the
 same as the base composition, then there would be some divergence from the independence of the bases. We can define the sample
 description space for doublet (letter pair) sequences as:
-$$S_{2} = \{ AA, AT, AC, AG, TA, TT, TC, TG, CA, CT, CC, CG, GA, GT, GC, GG \} $$
+$$S_{2} = \left \{ AA, AT, AC, AG, TA, TT, TC, TG, CA, CT, CC, CG, GA, GT, GC, GG \right \} $$
 And therefore the entropy ($H_{1}$) of the description space $S_{2}$ represented by equation (5):
 $$H_{2} = -[p(AA) \log p(AA) + p(AT) \log p(AT) + ...]$$
 But what is the probability of the doublet event? This is described in more detail below, in the *technical aside*.

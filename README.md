@@ -129,7 +129,7 @@ This follows for even sequences too, ```genome = "AGCTTTTC"``` which has ```len(
 can be seen that the doublet space is always $n-1$ or ```len(genome)-1```. This can be proved more rigorously by noting that each
 single base in the sequence may serve as the "root" of a doublet pair. Moving left to right through the sequence, no matter the
 length, there will always be a doublet pair that is comprised of the last base and a "null" value outside the sequence, so to speak.
-The base at the end of the sequence will always be left out. This is accounteed for by $n-1$.
+The base at the end of the sequence will always be left out. This is accounted for by $n-1$.
 
 Therefore, we may construct the sample space for doublets, $S_2$, from the sample space of singlets, $S_1$, as follows:
 ```

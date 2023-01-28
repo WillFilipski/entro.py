@@ -1,20 +1,267 @@
 # entro.py
-entro.py calculates basic informational parameters for any input string. To use, simply download the file "entro.py" into
-your working directory and load it like any other package.
+entro.py is a module that calculates basic informational parameters for any input string. To use, simply download the file "entro.py" into
+your working directory and load it like any other package. Make sure to define your input sequence ```sequence = "etc"``` and alphabet 
+```n = ["e", "t", "c"]``` variables as well!
+```
+import entro
+
+sequence = "etc"
+n = ["e", "t", "c"]
+```
 
 The theory underpinning the program can be found in "THEORY.md." It describes how and why to calculate the parameters that
 we can. Familiarity with Thermodynamic Entropy is recommended, but not required.
 
-## The Modules
+## $H_{1}^{Max}$ : State of Equiprobability
+```
+def max(n):
+    return math.log2(len(n))
+```
+#### Description
+```entro.max(n)``` calculates the maximum entropy of an alphabet. Time complexity of $O(1)$.
 
-(WIP)
+#### Arguments
+**n** is an array of character strings. It is the alphabet for the sequence. Ex. ```n = ["A", "T", "C", "G"]```.
 
-## Time Complexity
+## $f_i$ : Singlet Frequencies
+```
+def fi(n, sequence):
+    fi = []
+    for x in n:
+        fi.append(sequence.count(x) / len(sequence))
+```
+#### Description
+```entro.fi(n, sequence)``` calculates $f_i$ for a target sequence. Time Complexity of $O(N)$.
+
+#### Arguments
+**n** is the array of character strings that comprise the alphabet.
+
+**sequence** is a string variable.
+
+## $H_1$ : Shannon Entropy
+```
+def h(n, sequence):
+    fi = []
+    h1 = []
+    for x in n:
+        fi.append(sequence.count(x) / len(sequence))
+    
+    for x in fi:
+        h1.append(x*math.log2(x))
+
+    return -(sum(h1))
+```
+#### Description
+```entro.h(n, sequence)``` calculates the $H_1$ of a target sequence. Also calculates: $f_i$. Time complexity of $O(N)$.
+
+#### Arguments
+**n** is the array of character strings that comprise the alphabet.
+
+**sequence** is a string variable.
+
+## $D_1$ : Divergence from Equiprobability
+```
+def d1(n, sequence):
+    fi = []
+    h1 = []
+    for x in n:
+        fi.append(sequence.count(x) / len(sequence))
+    
+    for x in fi:
+        h1.append(x*math.log2(x))
+
+    H1 = -(sum(h1))
+    H1max = math.log2(len(n))
+    return H1max - H1
+```
+#### Description
+```entro.d1(n, sequence)``` calculates the $D_1$ of a target sequence. Also calculates: $H_{1}^{Max}$, $H_1$, and $f_i$. Time complexity of $O(N)$.
+
+#### Arguments
+**n** is the array of character strings that comprise the alphabet.
+
+**sequence** is a string variable.
+
+## $f_{ij}$ : Doublet Frequencies
+```
+def fij(n, sequence):
+    nn = []
+    fij = []
+
+    for x in n:
+        for y in n:
+            nn.append(x + y)
+    
+            fij.append(sequence.count(x + y) / (len(sequence)-1))
+    
+    return fij
+```
+#### Description
+```entro.fij(n, sequence)``` returns a 1D array of $f_{ij}$. Time complexity of $O(N^2)$.
+
+#### Arguments
+**n** is the array of character strings that comprise the alphabet.
+
+**sequence** is a string variable.
+
+## $D_2$ : Divergence from Independence
+```
+def h2i(n, sequence):
+    
+    # Singlet Frequencies
+    fi = []
+    h1 = []
+    for x in n:
+        fi.append(sequence.count(x) / len(sequence))
+    
+    # Shannon Entropy
+    for x in fi:
+        h1.append(x*math.log2(x))
+
+    H1 = -(sum(h1))
+    
+    # Doublet Frequencies
+    nn = []
+    fij = []
+    for x in n:
+        for y in n:
+            nn.append(x + y)
+    
+            fij.append(sequence.count(x + y) / (len(sequence)-1))
+    
+    #Divergence from Independence
+    h2ind = []
+    for x in fi:
+        for y in fi:
+            h2ind.append((x*y)*math.log2(x*y))
+
+    H2ind = -(sum(h2ind))
+
+    h2 = []
+    for x in fij:
+        h2.append(x*math.log2(x))
+
+    H2 = -(sum(h2))
+    
+    return H2ind - H2
+```
+#### Description
+```entro.h2i(n, sequence)``` returns the $D_2$ for a target sequence. Also calculates: $H_1$, $f_i$, $f_{ij}$, $H_{2}^{ind}$, and $H_2$.
+Time complexity of $O(N^2)$.
+
+#### Arguments
+**n** is the array of character strings that comprise the alphabet.
+
+**sequence** is a string variable.
+
+## $I_d$ : Information Density
+```
+def id(n, sequence):
+
+    # State of Equiprobaility
+    H1max = math.log2(len(n))
+
+    # Shannon Entropy
+    for x in fi:
+        h1.append(x*math.log2(x))
+
+    H1 = -(sum(h1))
+
+    # Divergence from Equiprobability
+    D1 = H1max - H1
+
+    # Singlet Frequencies
+    fi = []
+    h1 = []
+    for x in n:
+        fi.append(sequence.count(x) / len(sequence))
+    
+    # Doublet Frequencies
+    nn = []
+    fij = []
+    for x in n:
+        for y in n:
+            nn.append(x + y)
+            fij.append(sequence.count(x + y) / (len(sequence)-1))
+    
+    # Divergence from Independence
+    h2ind = []
+    for x in fi:
+        for y in fi:
+            h2ind.append((x*y)*math.log2(x*y))
+
+    H2ind = -(sum(h2ind))
+
+    h2 = []
+    for x in fij:
+        h2.append(x*math.log2(x))
+
+    H2 = -(sum(h2))
+    D2 = H2ind - H2
+
+    return D1 + D2
+```
+#### Description
+```entro.id(n, sequence)``` returns the $I_d$ of a target sequence. Also calculates: $H_{1}^{Max}$, $H_1$, $D_1$, $f_i$, $f_{ij}$,
+and $H_{2}^{ind}$. Time complexity of $O(N^2)$.
+
+#### Arguments
+**n** is the array of character strings that comprise the alphabet.
+
+**sequence** is a string variable.
+
+## $H_M$ : Markov Entropy
+```
+def hm(n, sequence):
+    # Singlet Frequencies
+    fi = []
+
+    for x in n:
+        fi.append(genome.count(x) / len(genome))
+
+    # Shannon Entropy
+    h1 = []
+    for x in fi:
+        h1.append(x*math.log2(x))
+
+    H1 = -(sum(h1))
+
+    # Doublet Frequencies
+    nn = []
+    fij = []
+
+    for x in n:
+        for y in n:
+            nn.append(x + y)
+            fij.append(genome.count(x + y) / (len(genome)-1))
+
+    # Doublet Entropy
+    h2 = []
+    for x in fij:
+        h2.append(x*math.log2(x))
+
+    H2 = -(sum(h2))
+    
+    return H2 - H1
+```
+#### Description
+``` entro.hm(n, sequence)``` returns the Markov entropy for a target string. Also calculates: $H_1$, $f_i$, $f_{ij}$, and $H_2$.
+Time complexity of $O(N^2)$.
+
+#### Arguments
+**n** is the array of character strings that comprise the alphabet.
+
+**sequence** is a string variable.
+
+## Technical Aside
 **TL;DR**: The functions for calculating *doublet frequencies* and *divergence from independence* are both $O(N^2)$ with the
 size of the alphabet. Unfortunately, this is unavoidable as it arises from the underlying math involved in calculating the
 doublet frequencies. Please use caution for larger alphabets!
 
-#### Technical Aside
+It is also recommended to assign the output of each function to a variable in order to save computation time, as each function calculates
+all previous parameters necessary to calculate the value of interest.
+
+#### Theoretical Basis
 In the original literature (published 1972) Gatlin references the *nearest-neighbor* experiments and uses those results to
 calculate the doublet frequencies. This will not be the method used here as it is a bit antiquated. It should be noted that
 the first viable method of genome sequencing, Sanger sequencing, would not be invented until 1977. Yet still, viable full-genome
@@ -28,7 +275,7 @@ R.A. Elton (1975) describes a method not based on the nearest-neighbor experimen
 >The sequence can be represented by $(x_{l}, ... , x_{n+1})$, using the convention that each value $x_i$ is 1, 2, 3 or 4
 according as the ith base in the sequence is U(T), C, A or G. The transition count is then a 4x4 matrix of frequencies { $f_{ij}$ }, where $f_{ij}$ is the number of times that a base *i* in the sequence is followed by a base *j*.
 
-By the grace of python, we do not need to use the cited convention that "each value $x_i$ is 1, 2, 3 or 4," but rather may
+Since we are using python, we do not need to use the cited convention that "each value $x_i$ is 1, 2, 3 or 4," but rather may
 simply use the ```count()``` function to identify the number of times a doublet appears in a given sequence.
 
 Just as one would find the frequency of a singlet by counting its occurence in a given sequence, then dividing it by the
@@ -61,3 +308,8 @@ R.A. Elton, but instead of keeping it in a 4x4 matrix, the results are appended 
 As such, *is important to note* that the time complexity of these two particular functions (doublet frequencies & divergence from
 independence) are $O(N^2)$ with the size of the input alphabet (the ```.count()``` function is $O(N)$ ). While this is trivial for small
 alphabets (like that of the genome) it will become computationally prohibitive at larger input spaces.
+
+Furthermore, each function calculates all values *from scratch.* To take one of the largest functions as an example, in order to calculate
+$I_d$, we must also calculate $H_{1}^{Max}$, $H_1$, $D_1$, $f_i$, $f_{ij}$, $H_{2}^{ind}$, and $D_2$. Most of which are $O(N^2)$ to the
+alphabet. In light of this, it is **highly** recommended that when using these function to assign their output to a variable so that you
+are not calculating the value from scratch each time.

@@ -1,7 +1,21 @@
 # entro.py
-entro.py calculates basic informational parameters for any input string.
+## Introduction
+entro.py calculates basic informational parameters for any input string. To use, simply download the file "entro.py" into
+your working directory and load it like any other package.
+
+The theory underpinning the program can be found in "THEORY.md." It describes how and why to calculate the parameters that
+we can. Familiarity with Thermodynamic Entropy is recommended, but not required.
+
+## The Modules
+
+(WIP)
 
 #### Technical Aside
+*TL;DR*: The functions for calculating *doublet frequencies* and *divergence from independence* are both $O(N^2)$ with the
+size of the alphabet. Unfortunately, this is unavoidable as it arises from the underlying math involved in calculating the
+doublet frequencies. Please use caution for larger alphabets!
+
+
 In the original literature (published 1972) Gatlin references the *nearest-neighbor* experiments and uses those results to
 calculate the doublet frequencies. This will not be the method used here as it is a bit antiquated. It should be noted that
 the first viable method of genome sequencing, Sanger sequencing, would not be invented until 1977. Yet still, viable full-genome
@@ -44,3 +58,7 @@ the doublets into a new list, ```nn = []```. At the same time, the frequencies, 
 of a given doublet, ```genome.count(x + y)``` and dividing it by the aforementioned doublet space, ```len(genome)-1```. This is
 all appended to a list of doublet frequencies, ```fij = []```. The nested for loops in effect are the same method described by
 R.A. Elton, but instead of keeping it in a 4x4 matrix, the results are appended into a 1-dimensional list.
+
+As such, *is important to note* that the time complexity of these two particular functions (doublet frequencies & divergence from
+independence) are $O(N^2)$ with the size of the input alphabet (the .count() function is $O(N)$). While this is trivial for small
+alphabets (Like that of the genome) it will become computationally prohibitive at larger input spaces.

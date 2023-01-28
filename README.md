@@ -10,7 +10,7 @@ we can. Familiarity with Thermodynamic Entropy is recommended, but not required.
 (WIP)
 
 ## Time Complexity
-*TL;DR*: The functions for calculating *doublet frequencies* and *divergence from independence* are both $O(N^2)$ with the
+**TL;DR**: The functions for calculating *doublet frequencies* and *divergence from independence* are both $O(N^2)$ with the
 size of the alphabet. Unfortunately, this is unavoidable as it arises from the underlying math involved in calculating the
 doublet frequencies. Please use caution for larger alphabets!
 

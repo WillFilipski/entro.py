@@ -59,5 +59,5 @@ all appended to a list of doublet frequencies, ```fij = []```. The nested for lo
 R.A. Elton, but instead of keeping it in a 4x4 matrix, the results are appended into a 1-dimensional list.
 
 As such, *is important to note* that the time complexity of these two particular functions (doublet frequencies & divergence from
-independence) are $O(N^2)$ with the size of the input alphabet (the .count() function is $O(N)$). While this is trivial for small
-alphabets (Like that of the genome) it will become computationally prohibitive at larger input spaces.
+independence) are $O(N^2)$ with the size of the input alphabet (the ```.count()``` function is $O(N)$ ). While this is trivial for small
+alphabets (like that of the genome) it will become computationally prohibitive at larger input spaces.

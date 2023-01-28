@@ -1,5 +1,4 @@
 # entro.py
-## Introduction
 entro.py calculates basic informational parameters for any input string. To use, simply download the file "entro.py" into
 your working directory and load it like any other package.
 
@@ -10,12 +9,12 @@ we can. Familiarity with Thermodynamic Entropy is recommended, but not required.
 
 (WIP)
 
-#### Technical Aside
+## Time Complexity
 *TL;DR*: The functions for calculating *doublet frequencies* and *divergence from independence* are both $O(N^2)$ with the
 size of the alphabet. Unfortunately, this is unavoidable as it arises from the underlying math involved in calculating the
 doublet frequencies. Please use caution for larger alphabets!
 
-
+#### Technical Aside
 In the original literature (published 1972) Gatlin references the *nearest-neighbor* experiments and uses those results to
 calculate the doublet frequencies. This will not be the method used here as it is a bit antiquated. It should be noted that
 the first viable method of genome sequencing, Sanger sequencing, would not be invented until 1977. Yet still, viable full-genome

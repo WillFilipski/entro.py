@@ -4,15 +4,11 @@ import math
 def max(n):
     return math.log2(len(n))
 
-# H1max = math.log2(len(n))
-
 #SINGLET FREQUENCIES
 def fi(n, sequence):
     fi = []
     for x in n:
         fi.append(sequence.count(x) / len(sequence))
-
-print(f'p({x}) = {sequence.count(x) / len(sequence)}')
 
 #SHANNON ENTROPY
 def h(n, sequence):
@@ -25,8 +21,6 @@ def h(n, sequence):
         h1.append(x*math.log2(x))
 
     return -(sum(h1))
-
-# print(f'Shannon Entropy, H1 = {H1} bits')
 
 #DIVERGENCE FROM EQUIPROBABILITY
 def d1(n, sequence):
@@ -44,8 +38,6 @@ def d1(n, sequence):
     H1max = math.log2(len(n))
     return H1max - H1
 
-# print(f'Divergence from equiprobability, D1 = {D1} bits')
-
 #DOUBLET FREQUENCIES
 def fij(n, sequence):
     nn = []
@@ -58,8 +50,6 @@ def fij(n, sequence):
             fij.append(sequence.count(x + y) / (len(sequence)-1))
     
     return fij
-
-# print(f'p({x}{y}) = {sequence.count(x + y) / (len(sequence)-1)}')
 
 #DIVERGENCE FROM INDEPENDENCE
 def h2i(n, sequence):
@@ -100,8 +90,6 @@ def h2i(n, sequence):
     H2 = -(sum(h2))
     
     return H2ind - H2
-
-# print(f'Divergence from independence, D2 = {D2} bits')
 
 #INFORMATION DENSITY
 def id(n, sequence):
@@ -149,8 +137,6 @@ def id(n, sequence):
 
     return D1 + D2
 
-# print(f'Information Density, Id = {Id} bits')
-
 #MARKOV ENTROPY
 def hm(n, sequence):
     # Singlet Frequencies
@@ -183,5 +169,3 @@ def hm(n, sequence):
     H2 = -(sum(h2))
 
     return H2 - H1
-
-# print(f'Markov entropy, Hm = {Hm} bits')

@@ -1,8 +1,5 @@
 import math
 
-sequence = "AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGCTTCTGAACCTG"
-n = ["A", "T", "C", "G"]
-
 #STATE OF EQUIPROBABILITY
 def max(n):
     return math.log2(len(n))

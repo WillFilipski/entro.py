@@ -27,7 +27,7 @@ $$S_{A}=K \log W_{A}$$
 and system *B*
 $$S_{B}=K \log W_{B}$$
 Adding these entropies, we have the entropy of the composite system,
-$$S_AB=K \log W_{A}+KlogW_{B}$$
+$$S_{AB}=K \log W_{A}+KlogW_{B}$$
 Such that
 $$S_{AB}=K \log W_{A}W_{B}$$
 or

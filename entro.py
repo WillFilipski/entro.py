@@ -9,6 +9,8 @@ def fi(n, sequence):
     fi = []
     for x in n:
         fi.append(sequence.count(x) / len(sequence))
+        
+    return fi
 
 #SHANNON ENTROPY
 def h(n, sequence):

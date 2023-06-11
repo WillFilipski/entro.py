@@ -100,6 +100,11 @@ def id(n, sequence):
     H1max = math.log2(len(n))
 
     # Shannon Entropy
+    fi = []
+    h1 = []
+    for x in n:
+        fi.append(sequence.count(x) / len(sequence))
+    
     for x in fi:
         h1.append(x*math.log2(x))
 

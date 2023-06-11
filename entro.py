@@ -145,7 +145,7 @@ def hm(n, sequence):
     fi = []
 
     for x in n:
-        fi.append(genome.count(x) / len(genome))
+        fi.append(sequence.count(x) / len(sequence))
 
     # Shannon Entropy
     h1 = []
@@ -161,7 +161,7 @@ def hm(n, sequence):
     for x in n:
         for y in n:
             nn.append(x + y)
-            fij.append(genome.count(x + y) / (len(genome)-1))
+            fij.append(sequence.count(x + y) / (len(sequence)-1))
 
     # Doublet Entropy
     h2 = []

@@ -10,7 +10,7 @@ n = ["e", "t", "c"]
 ```
 
 The theory underpinning the program can be found in "THEORY.md." It describes how and why to calculate the parameters that
-we can. Familiarity with Thermodynamic Entropy is recommended, but not required.
+we can. Familiarity with thermodynamic entropy is recommended, but not required.
 
 ## $H_{1}^{Max}$ : State of Equiprobability
 ```

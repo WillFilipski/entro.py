@@ -109,12 +109,6 @@ def h2i(sequence):
     for x in set(Counter(sequence).elements()):
         fi.append(Counter(sequence)[x] / len(sequence))
     
-    # Shannon Entropy
-    for x in fi:
-        h1.append(x*math.log2(x))
-
-    H1 = -(sum(h1))
-    
     # Doublet Frequencies
     nn = []
     fij = []
